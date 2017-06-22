@@ -1,11 +1,12 @@
-const React = require('react')
-const SummonerInfo = require('./SummonerInfo')
+const React = require('react');
+const SummonerInfo = require('./SummonerInfo');
+
 
 class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      summoner: null
+      summoner: null,  
     }
     this.search = this.search.bind(this);
     this.clear = this.clear.bind(this);
@@ -38,7 +39,11 @@ class Container extends React.Component {
         <input id="search" type="text" placeholder="Summoner name..."/>
         <button onClick={this.search}>Search</button>
         <button onClick={this.clear}>Reset</button>
-        {!summoner ? null : <SummonerInfo summonerName={summoner}/>}
+        {!summoner ? null : 
+          <div>
+            <SummonerInfo summonerName={summoner}/>
+          </div>
+        }
       </div>
     );
   }

@@ -1,10 +1,16 @@
 const React = require('react');
 
 class Live extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      matchData: props.matchData
+    }
+  }
   render() {
     return(
       <div>
-        Live
+        {console.log(this.state.matchData)}
       </div>
     )
   }
