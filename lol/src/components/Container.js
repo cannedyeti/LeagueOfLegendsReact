@@ -12,8 +12,14 @@ class Container extends React.Component {
 
   search() {
     var name = document.getElementById('search');
-    console.log(name.value)
-    this.setState({summoner: name.value});
+    if (this.state.summoner !== null ){
+      this.setState({summoner: null})
+      setInterval(() => {
+        this.setState({summoner: name.value})
+      }, 1);
+    } else {
+      this.setState({summoner: name.value});
+    }
   }
   render() {
     let summoner = this.state.summoner;
