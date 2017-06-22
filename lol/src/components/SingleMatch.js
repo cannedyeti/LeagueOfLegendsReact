@@ -7,7 +7,8 @@ class SingleMatch extends React.Component {
     this.state = {
       match: props.game,
       matchInfo: null,
-      win: false
+      win: false,
+      player: null
     }
     this.checkWin = this.checkWin.bind(this);
   }
@@ -19,7 +20,7 @@ class SingleMatch extends React.Component {
     setTimeout(() => {
       var matchInfo = this.state.matchInfo;
       this.checkWin(matchInfo)
-    },500)
+    },800)
   }
 
   checkWin(info) {
@@ -27,24 +28,34 @@ class SingleMatch extends React.Component {
     var searchedPlayer = info.participants.filter(function(player) {
       return player.championId === champ
     })
-    var playerTeam = searchedPlayer[0].teamId
+    var player = searchedPlayer[0]
     var winner = info.teams.filter(function(team) {
-      return team.teamId === playerTeam
+      return team.teamId === player.teamId
     })
-    console.log('Winner', winner)
     if (winner[0].win === 'Win') {
-      this.setState({win: true});
+      this.setState({win: true, player: player});
+    } else {
+      this.setState({win: false, player: player});
     }
   }
 
   render() {
-    var matchInfo = this.state.matchInfo;
+    // var matchInfo = this.state.matchInfo;
+    var player = this.state.player;
     return (
       <div
         style={this.state.win === true ? {background: 'green'} :  {background: 'red'} }
       >
-        {console.log("matchInfo", matchInfo, "GameID", this.state.match)}
-        {this.state.match.champion}
+      {!this.state.win ? <p>Loss</p> : <p>Win</p>}
+        {/*{console.log("player", player, "GameID", this.state.match)}*/}
+        <h2>Champion Id: {this.state.match.champion}</h2>
+        {!player ? null : <p>{player.stats.kills}/{player.stats.deaths}/{player.stats.assists}</p>}
+         {!player ? null : <ul className="matchInfo">
+          <li>Champ Level: {player.stats.champLevel}</li>
+          <li>Gold Earned: {player.stats.goldEarned}</li>
+          <li>Total Damage Dealt to Champs: {player.stats.totalDamageDealtToChampions}</li>
+          <li>Creep Score: {player.stats.totalMinionsKilled}</li>
+        </ul>}
       </div>
     )
   }

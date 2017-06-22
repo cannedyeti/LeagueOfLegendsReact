@@ -1,5 +1,6 @@
 const React = require('react')
 const RecentMatches = require('./RecentMatches')
+const RankedHistory = require('./RankedHistory')
 
 class SummonerInfo extends React.Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class SummonerInfo extends React.Component {
   }
   componentDidMount() {
     var name = this.state.summonerName
-    console.log("name from suminfo", name)
     fetch('/league/' + name)
       .then(res => res.json())
       .then(sum => this.setState({summoner: sum}))
@@ -29,7 +29,8 @@ class SummonerInfo extends React.Component {
           <div>
             <h1>Account Name: {sum.info.name}</h1>
           </div>}
-        {!sum ? <p></p> : <RecentMatches matches={sum.recent_matches.matches}/>}
+        {!sum ? null :<RankedHistory rank={sum.ranked_league}/>}
+        {!sum ? null : <RecentMatches matches={sum.recent_matches.matches}/>}
       </div>
     );
   }

@@ -23,3 +23,11 @@ ul li {
 .footer p {
   padding-top: 15px;
 }
+
+ul.matchInfo {
+  display: block;
+}
+
+ul.matchInfo li{
+  padding: 10px;
+}

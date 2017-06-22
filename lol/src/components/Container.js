@@ -8,6 +8,7 @@ class Container extends React.Component {
       summoner: null
     }
     this.search = this.search.bind(this);
+    this.clear = this.clear.bind(this);
   }
 
   search() {
@@ -20,6 +21,14 @@ class Container extends React.Component {
     } else {
       this.setState({summoner: name.value});
     }
+    name.value = '';
+  }
+  clear() {
+    var name = document.getElementById('search');
+    if(this.state.summoner !== null) {
+      this.setState({summoner: null});
+    }
+    name.value = '';
   }
   render() {
     let summoner = this.state.summoner;
@@ -28,7 +37,8 @@ class Container extends React.Component {
         <h3>Search for a summoner here..</h3>
         <input id="search" type="text" placeholder="Summoner name..."/>
         <button onClick={this.search}>Search</button>
-        {!summoner ? <p>Search for a summoner</p> : <SummonerInfo summonerName={summoner}/>}
+        <button onClick={this.clear}>Reset</button>
+        {!summoner ? null : <SummonerInfo summonerName={summoner}/>}
       </div>
     );
   }

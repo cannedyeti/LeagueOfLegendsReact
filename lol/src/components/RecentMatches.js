@@ -12,7 +12,6 @@ class RecentMatches extends React.Component {
     var matches = this.state.matches;
     return (
       <div>
-        {console.log("Matches", matches)}
         <h1>Recent Matches</h1>
         <ul>
           {!matches ? <p>Getting Matches...</p> : 
