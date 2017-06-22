@@ -26,6 +26,7 @@ router.get('/:name', function(req, res, next) {
     }).then(function(){
       rp("https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/" + accountId + '/recent?api_key=' + API_KEY, function(error, res, body){
         recentMatches = JSON.parse(body);
+        recentMatches.matches = recentMatches.matches.slice(0,5);
       }).then(function() {
         rp('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + summonerId + '?api_key=' + API_KEY, function(error, res, body) {
           rankedLeague = JSON.parse(body);
