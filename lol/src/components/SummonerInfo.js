@@ -1,5 +1,5 @@
 const React = require('react')
-
+const RecentMatches = require('./RecentMatches')
 
 class SummonerInfo extends React.Component {
   constructor(props) {
@@ -29,6 +29,7 @@ class SummonerInfo extends React.Component {
           <div>
             <h1>Account Name: {sum.info.name}</h1>
           </div>}
+        {!sum ? <p></p> : <RecentMatches matches={sum.recent_matches.matches}/>}
       </div>
     );
   }

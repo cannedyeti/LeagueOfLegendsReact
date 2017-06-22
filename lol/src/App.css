@@ -4,9 +4,22 @@
 
 ul {
   padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 ul li {
   text-decoration: none;
   list-style-type: none;
+  padding: 20px;
+}
+
+.footer {
+  background-color: grey;
+  height: 50px;
+}
+
+.footer p {
+  padding-top: 15px;
 }

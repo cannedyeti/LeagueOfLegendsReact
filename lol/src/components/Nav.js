@@ -9,6 +9,16 @@ function Nav () {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink  to='/live'>
+          Live
+        </NavLink>
+      </li>
+      <li>
+        <NavLink  to='/streams'>
+          Streams
+        </NavLink>
+      </li>
     </ul>
   )
 }

@@ -25,6 +25,7 @@ class Container extends React.Component {
     let summoner = this.state.summoner;
     return (
       <div>
+        <h3>Search for a summoner here..</h3>
         <input id="search" type="text" placeholder="Summoner name..."/>
         <button onClick={this.search}>Search</button>
         {!summoner ? <p>Search for a summoner</p> : <SummonerInfo summonerName={summoner}/>}
