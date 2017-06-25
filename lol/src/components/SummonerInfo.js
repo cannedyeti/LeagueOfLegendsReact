@@ -3,12 +3,13 @@ const RecentMatches = require('./RecentMatches');
 const RankedHistory = require('./RankedHistory');
 const Live = require('./Live');
 
+
 function UserNav (props) {
   var states
   if (props.live === true) {
-    states = ['home', 'leagues', 'stats', 'live'];
+    states = ['summary', 'leagues', 'stats', 'live'];
   } else  {
-    states = ['home', 'leagues', 'stats'];
+    states = ['summary', 'leagues', 'stats'];
   }
   return(
     <ul>
@@ -16,7 +17,7 @@ function UserNav (props) {
         return (
           <li key={state}>
             <button onClick={props.onSelect.bind(null, state)}>
-              {state}
+              {state[0].toUpperCase() + state.substring(1)}
             </button>
           </li>
         )
@@ -35,13 +36,20 @@ class SummonerInfo extends React.Component {
       game: null,
       leagues: false,
       stats: false,
-      home: true,
+      summary: true,
       live: false
     }
     this.changeComponent = this.changeComponent.bind(this);
   }
   componentDidMount() {
     var name = this.state.summonerName
+    
+    // GET ALL CHAMPS WHEN PATCH HAPPENS
+
+    // fetch('/league/champ/all')
+    // .then(res => res.json())
+    // .then(r => console.log("champs", r))
+
     fetch('/league/' + name)
       .then(res => res.json())
       .then(sum => {
@@ -56,19 +64,18 @@ class SummonerInfo extends React.Component {
           })
         }
       })
-    
   }
   changeComponent(component) {
     this.setState({
       leagues: false,
       stats: false,
-      home: false,
+      summary: false,
       live: false
     })
     setTimeout(() => {
-      if(component === 'home') {
+      if(component === 'summary') {
         this.setState({
-          home: true
+          summary: true
         }) 
       } else if (component === 'leagues'){
         this.setState({
@@ -99,8 +106,8 @@ class SummonerInfo extends React.Component {
           </div>}
         {!sum ? null :
           <div>
-            {!this.state.home ? null : <RankedHistory rank={sum.ranked_league}/>}
-            {!this.state.home ? null : <RecentMatches matches={sum.recent_matches.matches}/>}
+            {!this.state.summary ? null : <RankedHistory rank={sum.ranked_league}/>}
+            {/*{!this.state.summary ? null : <RecentMatches matches={sum.recent_matches.matches}/>}*/}
             {!this.state.live ? null : <Live matchData={sum.match_data}/>}
           </div>
         }

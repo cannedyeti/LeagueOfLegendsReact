@@ -1,4 +1,5 @@
 const React = require('react');
+const Api = require('../utilities/ChampApi')
 
 class Live extends React.Component {
   constructor(props) {
@@ -8,9 +9,11 @@ class Live extends React.Component {
     }
   }
   render() {
-    return(
+    var champs = Api.champ.champs.data;
+    return (
       <div>
-        {console.log(this.state.matchData)}
+        {console.log("match data", this.state.matchData)}
+        {console.log('champs', champs)}
       </div>
     )
   }

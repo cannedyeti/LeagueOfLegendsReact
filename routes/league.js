@@ -59,4 +59,17 @@ router.get('/:name', function(req, res, next) {
   });
 })
 
+router.get('/champ/all', function(req, res, next) {
+  var champs;
+  var data = {};
+  rp('https://na1.api.riotgames.com/lol/static-data/v3/champions?locale=en_US&tags=all&dataById=false&api_key=' + API_KEY, function(error, res, body) {
+    champs = JSON.parse(body);
+  }).then(function(){
+    data = {
+      'champs': champs
+    }
+    res.send(data);
+  })
+})
+
 module.exports = router;

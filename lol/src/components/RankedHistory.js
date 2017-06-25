@@ -10,7 +10,7 @@ class RankedHistory extends React.Component {
   }
   render() {
     return(
-      <div>
+      <div className="col-xs-3">
         {this.state.ranked.map(function(league, index) {
           return (
             <RankedLeague key={index} leagueInfo={league}/>
