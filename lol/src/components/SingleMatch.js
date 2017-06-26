@@ -46,27 +46,45 @@ class SingleMatch extends React.Component {
     var spells = SumApi.spells;
     var player = this.state.player;
     var championPlayed = this.state.match.champion;
-    // console.log(champs)
     var championKeyName = champs.champs.keys[championPlayed];
     var championData = champs.champs.data[championKeyName];
     console.log(championData)
+    console.log('spells', spells)
+    var findSpell = function(sId) {
+      for (var spell in spells.data) {
+        if (spells.data[spell].id === sId) {
+          return spell
+        }
+      }
+    }
+    // var spell1 = findSpell(player.spell1Id)
+    // var spell2 = findSpell(player.spell1Id)
 
     return (
-      <div
-        className="row"
-        style={this.state.win === true ? {border: '1px solid green'} : {border: '1px solid red'} }
-      >
-      {!this.state.win ? <p>Loss</p> : <p>Win</p>}
-        {console.log("player", player, "GameID", this.state.match)}
-        <h2>{championData.name}</h2>
-        <img src={"http://ddragon.leagueoflegends.com/cdn/7.12.1/img/champion/" + championData.name + ".png"} />
-        {!player ? null : <p>{player.stats.kills}/{player.stats.deaths}/{player.stats.assists}</p>}
-         {!player ? null : <ul className="matchInfo">
-          <li>Champ Level: {player.stats.champLevel}</li>
-          <li>Gold Earned: {player.stats.goldEarned}</li>
-          <li>Total Damage Dealt to Champs: {player.stats.totalDamageDealtToChampions}</li>
-          <li>Creep Score: {player.stats.totalMinionsKilled}</li>
-        </ul>}
+      <div>
+        {!player ? null : <div
+          className="row"
+          style={this.state.win === true ? {border: '1px solid green'} : {border: '1px solid red'} }>
+
+          <div className="col-xs-2">
+            {!this.state.win ? <p>Defeat</p> : <p>Victory</p>}
+            <img className="recent-match-champ-image" src={"http://ddragon.leagueoflegends.com/cdn/7.12.1/img/champion/" + championData.name + ".png"} />
+            <p>{championData.name}</p>
+          </div>
+          <div className="col-xs-2">
+            <p>{player.stats.kills}/{player.stats.deaths}/{player.stats.assists}</p>
+            <img className="sum-spell" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/spell/'+ findSpell(player.spell1Id) +'.png' } /><img className="sum-spell" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/spell/'+ findSpell(player.spell2Id) +'.png'} />
+          </div>
+          <div className="col-xs-2">
+            <p>Level {player.stats.champLevel}</p>
+            <p>{player.stats.totalMinionsKilled} CS</p>
+          </div>
+          <div className="col-xs-3">
+          </div>
+          <div className="col-xs-3">
+          </div>
+          {console.log("player", player, "GameID", this.state.match)}
+        </div>}
       </div>
     )
   }

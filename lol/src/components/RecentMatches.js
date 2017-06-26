@@ -16,7 +16,7 @@ class RecentMatches extends React.Component {
           {!matches ? <p>Getting Matches...</p> : 
             matches.map((match) => {
               return (
-                <li key={match.gameId}>
+                <li className="recent-match" key={match.gameId}>
                   <SingleMatch game={match}/>
                 </li>
               )

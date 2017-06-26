@@ -3,7 +3,6 @@ const RecentMatches = require('./RecentMatches');
 const RankedHistory = require('./RankedHistory');
 const Live = require('./Live');
 
-
 function UserNav (props) {
   var states
   if (props.live === true) {
@@ -65,7 +64,7 @@ class SummonerInfo extends React.Component {
         }
       })
   }
-  
+
   changeComponent(component) {
     this.setState({
       leagues: false,
@@ -98,13 +97,12 @@ class SummonerInfo extends React.Component {
     var sum = this.state.summoner;
     return (
       <div>
-        <UserNav live={this.state.inGame} onSelect={this.changeComponent}/>
-        <h1>League Info</h1>
         {console.log("Summoner:", this.state.summoner)}
         {!sum ? <p>Loading...</p> : 
-          <div>
-            <h1>Account Name: {sum.info.name}</h1>
+          <div className="profile-header">
+            <img className="profile-icon" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/profileicon/' + sum.info.profileIconId + '.png'} /><span className="summoner-name">{sum.info.name}</span>
           </div>}
+        <UserNav live={this.state.inGame} onSelect={this.changeComponent}/>
         {!sum ? null :
           <div>
             {!this.state.summary ? null : <RankedHistory rank={sum.ranked_league}/>}

@@ -81,3 +81,32 @@ ul.matchInfo li{
 .rank-image {
   height: 80px;
 }
+
+.profile-icon {
+  height: 100px;
+}
+
+.profile-header {
+  text-align: left;
+  margin: 50px;
+}
+
+.summoner-name {
+  margin-left: 50px;
+  font-size: 40px;
+}
+
+.recent-match-champ-image {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.recent-match {
+  width: 99%;
+  padding: 3px;
+  padding-right: 20px;
+}
+
+.sum-spell {
+  height: 35px;
+}
