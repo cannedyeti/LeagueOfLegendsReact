@@ -14,6 +14,7 @@ class Live extends React.Component {
       <div>
         {console.log("match data", this.state.matchData)}
         {console.log('champs', champs)}
+        
       </div>
     )
   }

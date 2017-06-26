@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #d9d9d9;
+}
+
 ul {
   padding: 0;
   display: flex;
@@ -30,4 +34,50 @@ ul.matchInfo {
 
 ul.matchInfo li{
   padding: 10px;
+}
+
+.ranked-league-container {
+  margin-left: 20px; 
+  font-size: 11px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  border: .5px solid grey;
+}
+
+.ranked-league-container p {
+  margin-top: 10px;
+}
+
+.ranked-league {
+  height: 200px;
+}
+
+.ranked-league-rank {
+  font-size: 12px;
+  text-align: left;
+}
+
+.ranked-league-point {
+  text-align: left;
+}
+
+.ranked-league-type {
+  
+}
+
+.ranked-league-name {
+  
+  color: grey;
+}
+
+.ranked-league-win-loss {
+  text-align: right;
+}
+
+.ranked-league-win-percentage {
+  text-align: right;
+}
+
+.rank-image {
+  height: 80px;
 }

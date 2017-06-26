@@ -11,8 +11,7 @@ class RecentMatches extends React.Component {
   render() {
     var matches = this.state.matches;
     return (
-      <div>
-        <h1>Recent Matches</h1>
+      <div className="col-xs-7">
         <ul>
           {!matches ? <p>Getting Matches...</p> : 
             matches.map((match) => {

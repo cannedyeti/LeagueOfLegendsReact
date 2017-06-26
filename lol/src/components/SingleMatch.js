@@ -1,5 +1,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
+const ChampApi = require('../utilities/ChampApi');
+const SumApi = require('../utilities/SummonerSpellApi');
 
 class SingleMatch extends React.Component {
   constructor(props) {
@@ -40,15 +42,24 @@ class SingleMatch extends React.Component {
   }
 
   render() {
-    // var matchInfo = this.state.matchInfo;
+    var champs = ChampApi.champ;
+    var spells = SumApi.spells;
     var player = this.state.player;
+    var championPlayed = this.state.match.champion;
+    // console.log(champs)
+    var championKeyName = champs.champs.keys[championPlayed];
+    var championData = champs.champs.data[championKeyName];
+    console.log(championData)
+
     return (
       <div
-        style={this.state.win === true ? {background: 'green'} :  {background: 'red'} }
+        className="row"
+        style={this.state.win === true ? {border: '1px solid green'} : {border: '1px solid red'} }
       >
       {!this.state.win ? <p>Loss</p> : <p>Win</p>}
-        {/*{console.log("player", player, "GameID", this.state.match)}*/}
-        <h2>Champion Id: {this.state.match.champion}</h2>
+        {console.log("player", player, "GameID", this.state.match)}
+        <h2>{championData.name}</h2>
+        <img src={"http://ddragon.leagueoflegends.com/cdn/7.12.1/img/champion/" + championData.name + ".png"} />
         {!player ? null : <p>{player.stats.kills}/{player.stats.deaths}/{player.stats.assists}</p>}
          {!player ? null : <ul className="matchInfo">
           <li>Champ Level: {player.stats.champLevel}</li>

@@ -43,7 +43,7 @@ class SummonerInfo extends React.Component {
   }
   componentDidMount() {
     var name = this.state.summonerName
-    
+
     // GET ALL CHAMPS WHEN PATCH HAPPENS
 
     // fetch('/league/champ/all')
@@ -65,6 +65,7 @@ class SummonerInfo extends React.Component {
         }
       })
   }
+  
   changeComponent(component) {
     this.setState({
       leagues: false,
@@ -107,7 +108,7 @@ class SummonerInfo extends React.Component {
         {!sum ? null :
           <div>
             {!this.state.summary ? null : <RankedHistory rank={sum.ranked_league}/>}
-            {/*{!this.state.summary ? null : <RecentMatches matches={sum.recent_matches.matches}/>}*/}
+            {!this.state.summary ? null : <RecentMatches matches={sum.recent_matches.matches}/>}
             {!this.state.live ? null : <Live matchData={sum.match_data}/>}
           </div>
         }
