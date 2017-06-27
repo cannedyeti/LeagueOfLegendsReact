@@ -19,6 +19,11 @@ function Nav () {
           Streams
         </NavLink>
       </li>
+      <li>
+        <NavLink  to='/ultimate-bravery'>
+          Ultimate Bravery
+        </NavLink>
+      </li>
     </ul>
   )
 }

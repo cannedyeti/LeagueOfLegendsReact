@@ -3,6 +3,7 @@ import './App.css';
 const Home = require('./components/Home');
 const Nav = require('./components/Nav');
 const Live = require('./components/Live');
+const UltimateContainer = require('./components/ultimate-bravery/UltimateContainer');
 const Streams = require('./components/Streams');
 const Footer = require('./components/Footer');
 var ReactRouter = require('react-router-dom');
@@ -23,6 +24,7 @@ class App extends Component {
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/live' component={Live}/>
                 <Route exact path='/streams' component={Streams}/>
+                <Route path='/ultimate-bravery' component={UltimateContainer}/>
                 <Route render={function() {
                   return <p>404 Not Found</p>
                 }} />

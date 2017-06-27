@@ -110,3 +110,25 @@ ul.matchInfo li{
 .sum-spell {
   height: 35px;
 }
+
+.ultimate-champion-image {
+  height: 60px;
+}
+
+.ultimate-container {
+  margin: 10px;
+}
+
+.brave-button {
+  font-size: 25px;
+  margin-top: 200px;
+  background: #d9d9d9;
+  border: 4px solid black;
+  color: black;
+}
+
+.brave-button:hover {
+  border: 4px solid #d9d9d9;
+  background: black;
+  color: #d9d9d9;
+}

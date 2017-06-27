@@ -68,12 +68,12 @@ class SingleMatch extends React.Component {
 
           <div className="col-xs-2">
             {!this.state.win ? <p>Defeat</p> : <p>Victory</p>}
-            <img className="recent-match-champ-image" src={"http://ddragon.leagueoflegends.com/cdn/7.12.1/img/champion/" + championData.name + ".png"} />
+            <img alt={championData.name} className="recent-match-champ-image" src={"http://ddragon.leagueoflegends.com/cdn/7.12.1/img/champion/" + championData.image.full} />
             <p>{championData.name}</p>
           </div>
           <div className="col-xs-2">
             <p>{player.stats.kills}/{player.stats.deaths}/{player.stats.assists}</p>
-            <img className="sum-spell" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/spell/'+ findSpell(player.spell1Id) +'.png' } /><img className="sum-spell" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/spell/'+ findSpell(player.spell2Id) +'.png'} />
+            <img alt={player.spell1Id} className="sum-spell" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/spell/'+ findSpell(player.spell1Id) +'.png' } /><img alt={player.spell2Id} className="sum-spell" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/spell/'+ findSpell(player.spell2Id) +'.png'} />
           </div>
           <div className="col-xs-2">
             <p>Level {player.stats.champLevel}</p>

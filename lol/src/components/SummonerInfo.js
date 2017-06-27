@@ -100,7 +100,7 @@ class SummonerInfo extends React.Component {
         {console.log("Summoner:", this.state.summoner)}
         {!sum ? <p>Loading...</p> : 
           <div className="profile-header">
-            <img className="profile-icon" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/profileicon/' + sum.info.profileIconId + '.png'} /><span className="summoner-name">{sum.info.name}</span>
+            <img alt={sum.info.profileIconId} className="profile-icon" src={'http://ddragon.leagueoflegends.com/cdn/7.12.1/img/profileicon/' + sum.info.profileIconId + '.png'} /><span className="summoner-name">{sum.info.name}</span>
           </div>}
         <UserNav live={this.state.inGame} onSelect={this.changeComponent}/>
         {!sum ? null :
