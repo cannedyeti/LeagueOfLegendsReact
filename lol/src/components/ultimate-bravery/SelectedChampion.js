@@ -14,7 +14,7 @@ class SelectedChampion extends React.Component {
   }
 
   randomAdjective() {
-    var choices = ['Lit', 'Dank', '1%', 'Dick-sucking', 'Fukkboi', 'Long Schlong', 'Feeder', 'FaZe', 'Clavo\'s Bitch', 'Fuck Trent', 'Gay', 'Thicc']
+    var choices = ['Lit', 'Dank', '1%', 'Fukkboi', 'Feeder', 'FaZe', 'Clavo\'s Bitch', 'Fuck Trent', 'Thicc']
     return (choices[Math.floor(Math.random()*choices.length)]);
   }
 
